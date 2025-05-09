@@ -1,5 +1,3 @@
-import time
-
 import utils
 from Pages.elements_page import ElementsPage
 from Pages.home_page import HomePage
@@ -41,10 +39,10 @@ def test_elements_text_box_happy_flow(driver):
     actual_result_permanent_address = utils.split_text(text=elements_page.elements_text_box_permanent_address_result.text, separator=':')[1]
 
     with soft_assertions():
-        assert_that(actual_result_full_name).is_equal_to(full_name)
-        assert_that(actual_result_email).is_equal_to(email)
-        assert_that(actual_result_current_address).is_equal_to(current_address)
-        assert_that(actual_result_permanent_address).is_equal_to(permanent_address)
+        assert_that(actual_result_full_name, 'Verify full name value in confirm area').is_equal_to(full_name)
+        assert_that(actual_result_email, 'Verify email value in confirm area').is_equal_to(email)
+        assert_that(actual_result_current_address, 'Verify current address value in confirm area').is_equal_to(current_address)
+        assert_that(actual_result_permanent_address, 'Verify permanent address value in confirm area').is_equal_to(permanent_address)
 
 
 def test_elements_text_box_layout(driver):
@@ -56,12 +54,17 @@ def test_elements_text_box_layout(driver):
     elements_page.elements_text_box_list_item.click()
 
     with soft_assertions():
-        assert_that(elements_page.elements_text_box_header.text).is_equal_to(elements_page.data.TEXT_BOX_HEADER)
-        assert_that(elements_page.elements_text_box_full_name_label.text).is_equal_to(elements_page.data.TEXT_BOX_FULL_NAME_LABEL)
-        assert_that(elements_page.elements_text_box_email_label.text).is_equal_to(elements_page.data.TEXT_BOX_EMAIL_LABEL)
-        assert_that(elements_page.elements_text_box_current_address_label.text).is_equal_to(elements_page.data.TEXT_BOX_CURRENT_ADDRESS_LABEL)
-        assert_that(elements_page.elements_text_box_permanent_address_label.text).is_equal_to(elements_page.data.TEXT_BOX_PERMANENT_ADDRESS_LABEL)
-        assert_that(elements_page.elements_text_box_submit_button.text).is_equal_to(elements_page.data.TEXT_BOX_SUBMIT_BUTTON_TEXT)
+        assert_that(elements_page.elements_text_box_header.text, 'Verify text box header').is_equal_to(elements_page.data.TEXT_BOX_HEADER)
+        assert_that(elements_page.elements_text_box_full_name_label.text, 'Verify text box full name label').is_equal_to(
+            elements_page.data.TEXT_BOX_FULL_NAME_LABEL)
+        assert_that(elements_page.elements_text_box_email_label.text, 'Verify text box email label').is_equal_to(
+            elements_page.data.TEXT_BOX_EMAIL_LABEL)
+        assert_that(elements_page.elements_text_box_current_address_label.text, 'Verify text box current address label').is_equal_to(
+            elements_page.data.TEXT_BOX_CURRENT_ADDRESS_LABEL)
+        assert_that(elements_page.elements_text_box_permanent_address_label.text, 'Verify text box permanent address label').is_equal_to(
+            elements_page.data.TEXT_BOX_PERMANENT_ADDRESS_LABEL)
+        assert_that(elements_page.elements_text_box_submit_button.text, 'Verify text box submit button').is_equal_to(
+            elements_page.data.TEXT_BOX_SUBMIT_BUTTON_TEXT)
 
         elements_page.elements_text_box_fill_form(
             full_name='aaa',
@@ -72,14 +75,12 @@ def test_elements_text_box_layout(driver):
 
         elements_page.elements_text_box_submit_button.click()
 
-
         full_name_label = utils.split_text(text=elements_page.elements_text_box_name_result.text, separator='aaa')[0]
         email_label = utils.split_text(text=elements_page.elements_text_box_email_result.text, separator='aaa')[0]
         current_address_label = utils.split_text(text=elements_page.elements_text_box_current_address_result.text, separator='aaa')[0]
         permanent_address_label = utils.split_text(text=elements_page.elements_text_box_permanent_address_result.text, separator='aaa')[0]
 
-
-        assert_that(full_name_label).is_equal_to(elements_page.data.TEXT_BOX_CONFIRM_DATA_NAME)
-        assert_that(email_label).is_equal_to(elements_page.data.TEXT_BOX_CONFIRM_DATA_EMAIL)
-        assert_that(current_address_label).is_equal_to(elements_page.data.TEXT_BOX_CONFIRM_DATA_CURRENT_ADDRESS)
-        assert_that(permanent_address_label).is_equal_to(elements_page.data.TEXT_BOX_CONFIRM_DATA_PERMANENT_ADDRESS)
+        assert_that(full_name_label, 'Verify full name static text in confirm area').is_equal_to(elements_page.data.TEXT_BOX_CONFIRM_DATA_NAME)
+        assert_that(email_label, 'Verify email static text in confirm area').is_equal_to(elements_page.data.TEXT_BOX_CONFIRM_DATA_EMAIL)
+        assert_that(current_address_label, 'Verify current address static text in confirm area').is_equal_to(elements_page.data.TEXT_BOX_CONFIRM_DATA_CURRENT_ADDRESS)
+        assert_that(permanent_address_label, 'Verify permanent address static text in confirm area').is_equal_to(elements_page.data.TEXT_BOX_CONFIRM_DATA_PERMANENT_ADDRESS)

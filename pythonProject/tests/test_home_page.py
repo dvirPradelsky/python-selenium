@@ -18,8 +18,6 @@ def test_list_items_texts(driver):
         assert_that(home_page.get_item(index=3).text, "Verify widgets item text").is_equal_to(home_page.data.WIDGETS)
         assert_that(home_page.get_item(index=4).text, "Verify interactions item text").is_equal_to(home_page.data.INTERACTIONS)
         assert_that(home_page.get_item(index=5).text, "Verify book store applications item text").is_equal_to(home_page.data.BOOK_STORE_APPLICATIONS)
-# Todo:  HW- all tests should be with description like here !
-#first commit test
 
 
 def test_current_url(driver):
