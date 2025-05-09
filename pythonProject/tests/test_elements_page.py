@@ -1,5 +1,3 @@
-import time
-
 import utils
 from Pages.elements_page import ElementsPage
 from Pages.home_page import HomePage
