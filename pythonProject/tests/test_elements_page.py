@@ -84,3 +84,22 @@ def test_elements_text_box_layout(driver):
         assert_that(email_label, 'Verify email static text in confirm area').is_equal_to(elements_page.data.TEXT_BOX_CONFIRM_DATA_EMAIL)
         assert_that(current_address_label, 'Verify current address static text in confirm area').is_equal_to(elements_page.data.TEXT_BOX_CONFIRM_DATA_CURRENT_ADDRESS)
         assert_that(permanent_address_label, 'Verify permanent address static text in confirm area').is_equal_to(elements_page.data.TEXT_BOX_CONFIRM_DATA_PERMANENT_ADDRESS)
+
+
+def test_elements_text_box_errors(driver):
+    """
+    Verify text box errors - empty fields and email
+    """
+    elements_page = ElementsPage(driver)
+    elements_page.go_to_url(elements_page.data.URL_PAGE)
+    elements_page.elements_text_box_list_item.click()
+
+    with soft_assertions():
+        elements_page.elements_text_box_submit_button.click()
+
+        # elements_page.elements_text_box_fill_form(
+        #     full_name='aaa',
+        #     email='aaa@gmail.com',
+        #     current_address='aaa',
+        #     permanent_address='aaa'
+        # )
